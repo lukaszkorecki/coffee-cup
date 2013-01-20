@@ -1,3 +1,6 @@
+require './lib/models/user'
+require './lib/models/coffee'
+require './lib/models/counter'
 class CoffeeApp < Sinatra::Base
   get '/' do
     erb :index
