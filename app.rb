@@ -1,11 +1,12 @@
 class CoffeeApp < Sinatra::Base
   get '/' do
-     "hello!"
+    erb :index
   end
 
   get '/coffees' do
 
   end
+
   get '/team' do
 
   end
