@@ -8,6 +8,7 @@ GEM
       thor (>= 0.14.6)
     guard-rspec (0.4.5)
       guard (>= 0.4.0)
+    json (1.7.6)
     listen (0.4.7)
       rb-fchange (~> 0.0.5)
       rb-fsevent (~> 0.9.1)
@@ -44,6 +45,7 @@ PLATFORMS
 DEPENDENCIES
   guard
   guard-rspec
+  json
   rspec
   sass
   shotgun
