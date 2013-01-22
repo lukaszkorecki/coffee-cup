@@ -2,6 +2,9 @@ require 'yaml'
 require 'json'
 require './lib/models'
 class CoffeeApp < Sinatra::Base
+
+  set :public_folder, './public'
+
   get '/' do
     content_type :html
     erb :index
