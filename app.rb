@@ -9,12 +9,12 @@ class CoffeeApp < Sinatra::Base
 
   get '/coffees' do
     content_type :json
-    COFFEES.all.to_json
+    COFFEES.to_json
   end
 
   get '/team' do
     content_type :json
-    USERS.all.to_json
+    USERS.to_json
   end
 
   post '/update/:coffee/:user' do |coffee_name, user_name|
@@ -22,7 +22,7 @@ class CoffeeApp < Sinatra::Base
     user = USERS.find_by_name  user_name
     coffee = COFFEES.find_by_name  coffee_name
     if user and coffee
-      COFFEE_COUNTER.add Coffee.new(coffee.values), User.new(user.values)
+      COFFEE_COUNTER.add coffee, user
       status 200
       body({ message: "ok!" }.to_json)
     else
