@@ -28,7 +28,8 @@ var renderUsers = function(element, users) {
         buff += "<img src='";
         buff += item.face_url;
         buff += "' />";
-        buff += +"</a></div>";
+        buff += "</a></div>";
+
     el.append(buff);
   });
 };
@@ -44,20 +45,25 @@ var resetState = function() {
   _state.selected_user = false;
   $('#coffeeList').hide();
   $('#userList').show();
-}
+  $('#header .back').hide();
+};
+
+var showCoffeePane = function() {
+  $('#coffeeList').show();
+  $('#header .back').show();
+  $('#userList').hide();
+};
+
 var userSelected = function() {
   console.log(this);
   _state.selected_user = $(this).data('user');
-  $(this).parent().addClass("selected");
   $('#coffeeList h1 span').html(_state.selected_user);
-  $('#coffeeList').show();
-  $('#userList').hide();
+  showCoffeePane();
   return false;
 };
 var coffeeSelected = function() {
   console.log(this);
   _state.selected_coffee = $(this).data('coffee');
-  $(this).parent().addClass("selected");
 
   console.dir(_state);
   if(_state.selected_user && _state.selected_coffee) {
@@ -65,7 +71,6 @@ var coffeeSelected = function() {
       console.log("OK!");
       _state.selected_coffee = false;
       _state.selected_user = false;
-      $(".selected").each(function() { $(this).removeClass("selected"); });
       resetState();
     });
   }
@@ -77,6 +82,8 @@ $(document).ready(function() {
   });
   getUsers(function(data) { renderUsers('#userList div', data); } );
 
+
+  $('#header .back a').click(resetState);
   $("#coffeeList").delegate(".coffee-cell a, .coffee-cell", 'click', coffeeSelected);
   $("#userList").delegate(".user-cell a, .coffee-cell", 'click', userSelected);
   resetState();
