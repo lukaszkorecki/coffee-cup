@@ -1,36 +1,69 @@
 body {
   font-family: 'Helvetica';
+  background: #e7e7e7;
+  margin: 0 ;
 }
 
 #wrapper {
-  width: 90%;
   margin: 0 auto;
+  background: #e7e7e7;
+  clear: both;
+}
+#header {
+  background: white;
+  border-bottom: 1px solid #888;
+  font-size: 200%;
+  height: 50px;
+  margin: 0 auto;
+  padding-left: 50px;
+  padding-top: 25px;
+  color: #999;
 }
 
-.column {
-  width: 49%;
-  float: left;
+#header .back {
+  float: right;
 }
+
+#header .back a {
+  text-decoration: none;
+  color: inherit;
+}
+#header .s1 {
+  font-weight: bold
+}
+
+#header, .column {
+  width: 90%;
+  padding: 5%;
+}
+
+.column h1 {
+  color: #525252;
+}
+
+.column div:first-child { float: left }
 
 .cell {
-  display: block;
-  float: left;
   margin: 20px;
   width: 130px;
-  height: 50px;
+  height: 80px;
   text-align: center;
-  border: 5px solid black;
+  display: inline-block;
+  clear: both;
 }
 
 .cell.selected {
   border: 5px solid red;
 }
 
+.coffee-cell {
+  margin: 40px;
+}
 .coffee-cell a {
   margin: 0 0 0 30px;
-  padding-top: 10px;
-  width: 100px;
-  height: 40px;
+  padding-top: 20px;
+  width: 150px;
+  height: 60px;
   display: block;
   background: white;
   vertical-align: middle;
@@ -39,7 +72,7 @@ body {
 }
 
 .cell a:hover {
-  text-shadow: 0 0 5px #000
+  text-shadow: 0 0 5px #eee
 }
 
 .user-cell {
