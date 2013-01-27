@@ -8,7 +8,12 @@ if not defined? COFFEES
 end
 
 if not defined? USERS
-  users = YAML::load_file './users.yml'
+  # lame
+  users = begin
+            JSON.parse ENV['USERS']
+          rescue
+            { 'dio' => { 'name' => 'Dio', 'face_url' => ''}, 'jojo' => { 'name' => 'JoJo', 'face_url' => ''}}
+          end
 end
 
 class Collection
