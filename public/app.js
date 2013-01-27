@@ -33,12 +33,15 @@ var _state = {
 var userSelected = function() {
   console.log(this);
   _state.selected_user = $(this).data('user');
+  $(this).parent().addClass("selected");
+  $('#coffeeList h1 span').html(_state.selected_user);
   console.dir(_state);
   return false;
 };
 var coffeeSelected = function() {
   console.log(this);
   _state.selected_coffee = $(this).data('coffee');
+  $(this).parent().addClass("selected");
 
   console.dir(_state);
   if(_state.selected_user && _state.selected_coffee) {
@@ -46,6 +49,7 @@ var coffeeSelected = function() {
       console.log("OK!");
       _state.selected_coffee = false;
       _state.selected_user = false;
+      $(".selected").each(function() { $(this).removeClass("selected"); });
     });
   }
   return false;
