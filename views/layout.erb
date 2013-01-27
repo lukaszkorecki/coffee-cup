@@ -13,8 +13,14 @@
   <body>
     <div id="wrapper">
       <%= yield %>
-      <div id="coffeeList" ></div>
-      <div id="userList"> </div>
+      <div id="userList" class="column">
+        <h1>Users</h1>
+        <div></div>
+      </div>
+      <div id="coffeeList" class="column">
+        <h1>Coffees</h1>
+        <div></div>
+      </div>
     </div>
   </body>
 </html>

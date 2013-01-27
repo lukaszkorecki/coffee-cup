@@ -3,18 +3,36 @@ body {
 }
 
 #wrapper {
-  width: 50%;
+  width: 90%;
   margin: 0 auto;
 }
 
-.coffee-cell {
-  width: 20px;
-  height: 20px;
+.column {
+  width: 49%;
+  float: left;
 }
-.coffee-cell a {
+
+.cell {
   display: block;
-  width: 100%;
-  height: 100%;
+  float: left;
+  margin: 20px;
+  width: 100px;
+  height: 50px;
   text-align: center;
-  margin: 40px;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
+.cell.selected {
+  border: 5px solid red;
+}
+
+.cell a {
+  vertical-align: middle;
+  text-decoration: none;
+  color: white;
+}
+
+.user-cell {
+  background: black;
 }

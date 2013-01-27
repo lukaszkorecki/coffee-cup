@@ -7,7 +7,7 @@ var renderCoffees = function(element, coffees) {
   var el = $(element);
   $(coffees).each(function(index, item) {
     console.log(item);
-    el.append("<div class='coffee-cell' style='background-color: "+item.color+"';><a href='#' data-coffee='"+item.name+"'>"+item.name+"</a></div>");
+    el.append("<div class='cell coffee-cell' style='background-color: "+item.color+"';><a href='#' data-coffee='"+item.name+"'>"+item.name+"</a></div>");
   });
 };
 
@@ -16,13 +16,22 @@ var renderUsers = function(element, users) {
   var el = $(element);
   $(users).each(function(index, item) {
     console.log(item);
-    el.append("<div class='user-cell' ><a href='#' data-user='"+item.name+"'>"+item.name+"</a></div>");
+    el.append("<div class='cell user-cell' ><a href='#' data-user='"+item.name+"'>"+item.name+"</a></div>");
   });
+};
+
+
+var userSelected = function() {
+  console.log(arguments);
+  return false;
 };
 
 $(document).ready(function() {
   console.log('ready');
-  getCoffees(function(data) { renderCoffees('#coffeeList', data);
+  getCoffees(function(data) { renderCoffees('#coffeeList div', data);
   });
-  getUsers(function(data) { renderUsers('#userList', data); } );
+  getUsers(function(data) { renderUsers('#userList div', data); } );
+
+  $("#coffeeList").delegate(".coffee-cell a", coffeeSelected);
+  $("#userList").delegate(".user-cell a", userSelected);
 });
