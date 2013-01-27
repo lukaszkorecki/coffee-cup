@@ -20,7 +20,16 @@ var renderCoffees = function(element, coffees) {
 var renderUsers = function(element, users) {
   var el = $(element);
   $(users).each(function(index, item) {
-    el.append("<div class='cell user-cell' ><a href='#' data-user='"+item.name+"'>"+item.name+"</a></div>");
+    // jesus, this sucks but I don't want to pull in a templating lib
+    var buff = "";
+        buff += "<div class='cell user-cell' ><a href='#' data-user='";
+        buff += item.name;
+        buff += "'>";
+        buff += "<img src='";
+        buff += item.face_url;
+        buff += "' />";
+        buff += +"</a></div>";
+    el.append(buff);
   });
 };
 
@@ -30,12 +39,19 @@ var _state = {
   selected_coffee : false
 };
 
+var resetState = function() {
+  _state.selected_coffee = false;
+  _state.selected_user = false;
+  $('#coffeeList').hide();
+  $('#userList').show();
+}
 var userSelected = function() {
   console.log(this);
   _state.selected_user = $(this).data('user');
   $(this).parent().addClass("selected");
   $('#coffeeList h1 span').html(_state.selected_user);
-  console.dir(_state);
+  $('#coffeeList').show();
+  $('#userList').hide();
   return false;
 };
 var coffeeSelected = function() {
@@ -50,6 +66,7 @@ var coffeeSelected = function() {
       _state.selected_coffee = false;
       _state.selected_user = false;
       $(".selected").each(function() { $(this).removeClass("selected"); });
+      resetState();
     });
   }
   return false;
@@ -62,4 +79,5 @@ $(document).ready(function() {
 
   $("#coffeeList").delegate(".coffee-cell a, .coffee-cell", 'click', coffeeSelected);
   $("#userList").delegate(".user-cell a, .coffee-cell", 'click', userSelected);
+  resetState();
 });
