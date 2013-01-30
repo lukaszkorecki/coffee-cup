@@ -16,4 +16,6 @@ RSpec.configure do |config|
   config.order = 'random'
 end
 
+# loaded from fakeredis
+require "./lib/redis"
 Dir['./lib/**/*.rb'].each { |r| require  r }

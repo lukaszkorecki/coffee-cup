@@ -1,5 +1,6 @@
 require 'yaml'
 require 'json'
+require './lib/redis'
 require './lib/models'
 class CoffeeApp < Sinatra::Base
 
@@ -25,7 +26,7 @@ class CoffeeApp < Sinatra::Base
     user = USERS.find_by_name  user_name
     coffee = COFFEES.find_by_name  coffee_name
     if user and coffee
-      COFFEE_COUNTER.add coffee, user
+      COFFEE_COUNTER.add user, coffee
       status 200
       body({ message: "ok!" }.to_json)
     else
@@ -36,10 +37,7 @@ class CoffeeApp < Sinatra::Base
 
   get '/api/stats' do
     content_type :json
-    {
-      user_stats: COFFEE_COUNTER.user_stats,
-      coffee_stats: COFFEE_COUNTER.coffee_stats
-    }.to_json
+    COFFEE_COUNTER.all_stats.to_json
   end
 
   get '/api/funnel/coffee-stats' do

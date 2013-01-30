@@ -57,4 +57,4 @@ end
 COFFEES = CoffeeCollection.new coffees
 USERS = UserCollection.new users
 
-COFFEE_COUNTER = Counter.new
+COFFEE_COUNTER = Counter.new(REDIS)
