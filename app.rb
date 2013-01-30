@@ -34,11 +34,19 @@ class CoffeeApp < Sinatra::Base
     end
   end
 
-  get '/stats' do
+  get '/api/stats' do
     content_type :json
     {
       user_stats: COFFEE_COUNTER.user_stats,
       coffee_stats: COFFEE_COUNTER.coffee_stats
     }.to_json
+  end
+
+  get '/api/funnel/coffee-stats' do
+
+  end
+
+  get '/api/funnel/user-stats' do
+
   end
 end
