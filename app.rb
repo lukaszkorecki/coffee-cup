@@ -2,6 +2,8 @@ require 'yaml'
 require 'json'
 require './lib/redis'
 require './lib/models'
+require './lib/widgets'
+
 class CoffeeApp < Sinatra::Base
 
   set :public_folder, './public'
@@ -40,11 +42,19 @@ class CoffeeApp < Sinatra::Base
     COFFEE_COUNTER.all_stats.to_json
   end
 
-  get '/api/funnel/coffee-stats' do
+  get '/api/widget/funnel/coffee-stats' do
+    content_type :json
+    GeckoFunnelWidget.new(COFFEE_COUNTER.coffee_stats).response.to_json
+  end
+
+  get '/api/widget/funnel/user-stats' do
+    content_type :json
+    GeckoFunnelWidget.new(COFFEE_COUNTER.user_stats).response.to_json
 
   end
 
-  get '/api/funnel/user-stats' do
-
+  get '/api/widget/number/daily-coffee' do
+    content_type :json
+    GeckoNumberWidget.new(COFFEE_COUNTER.daily_stats).response.to_json
   end
 end
