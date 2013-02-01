@@ -4,12 +4,8 @@ gem 'sinatra'
 gem 'sass'
 gem 'json'
 gem 'thin'
-if ENV['hiredis']
-  gem "hiredis"
-  gem "redis", :require => ["redis/connection/hiredis", "redis"]
-else
-  gem 'redis'
-end
+gem "hiredis"
+gem "redis", :require => ["redis/connection/hiredis", "redis"]
 
 
 group :development do
