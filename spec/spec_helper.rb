@@ -17,5 +17,6 @@ RSpec.configure do |config|
 end
 
 # loaded from fakeredis
-require "./lib/redis"
-Dir['./lib/**/*.rb'].each { |r| require  r }
+require 'mock_redis'
+REDIS = MockRedis.new
+Dir['./lib/**/*.rb'].reject{ |f| f=~/redis/}.each { |r| require  r }

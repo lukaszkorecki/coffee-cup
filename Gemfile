@@ -20,6 +20,6 @@ group :development do
 end
 
 group :test do
-  gem 'fakeredis', :require => "fakeredis/rspec"
+  gem 'mock_redis'
   gem 'rspec'
 end

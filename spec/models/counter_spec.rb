@@ -18,7 +18,7 @@ describe  'Counter' do
     Coffee.new(2, 'latte')
   end
 
-  subject { Counter.new }
+  subject { Counter.new MockRedis.new }
 
   it 'returns coffee stats' do
     subject.add jojo, mocha
@@ -26,8 +26,8 @@ describe  'Counter' do
     subject.add dio, latte
 
     subject.coffee_stats.should == [
-      {'mocha' => { count: 2 }},
-      {'latte' => { count: 1 }}
+      {'latte' =>  1 },
+      {'mocha' =>  2 }
     ]
 
   end
@@ -38,8 +38,8 @@ describe  'Counter' do
     subject.add dio, latte
 
     subject.user_stats.should == [
-      {'JoJo' => { count: 2 } },
-      {'Dio' => { count: 1 } }
+      {'Dio' =>  1  },
+      {'JoJo' =>  2  }
     ]
 
   end
