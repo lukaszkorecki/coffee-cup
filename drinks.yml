@@ -46,3 +46,10 @@ blue:
 dark_green:
   name: Fortissio Lungo
   color: '#2E8B57'
+tea:
+  name: Tea
+  color: white
+water:
+  name: Water
+  color: white
+
