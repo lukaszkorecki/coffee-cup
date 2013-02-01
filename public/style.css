@@ -78,5 +78,9 @@ body {
 .user-cell {
   background: black;
   width: 150px;
-  height: 100px;
+  height: 150px;
+}
+.user-cell img {
+  width: 150px;
+  height: 150px;
 }
