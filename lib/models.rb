@@ -4,7 +4,7 @@ require_relative './models/counter'
 
 # yay globals!
 if not defined? COFFEES
-  coffees = YAML::load_file './coffees.yml'
+  coffees = YAML::load_file './drinks.yml'
 end
 
 if not defined? USERS
