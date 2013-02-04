@@ -59,6 +59,10 @@ class Counter
 
   end
 
+  def total_coffees
+    coffee_stats.map {|c| c.values.first }.reduce(0) { |i,c| c+=i }
+  end
+
   private
   def day_of_year_today
     Time.now.strftime("%j").to_i

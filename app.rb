@@ -61,4 +61,10 @@ class CoffeeApp < Sinatra::Base
     content_type :json
     GeckoNumberWidget.new(COFFEE_COUNTER.daily_stats).response.to_json
   end
+
+  get '/api/widget/number/total-coffees' do
+    content_type :json
+    GeckoNumberWidget.new([COFFEE_COUNTER.total_coffees]).response.to_json
+
+  end
 end
