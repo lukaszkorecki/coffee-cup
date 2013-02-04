@@ -37,6 +37,10 @@ class CoffeeApp < Sinatra::Base
     end
   end
 
+  post '/flush' do
+     REDIS.flushdb
+  end
+
   get '/api/stats' do
     content_type :json
     COFFEE_COUNTER.all_stats.to_json
