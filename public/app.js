@@ -3,8 +3,8 @@ var getCoffees = function(cb) { $.get("/coffees", cb); };
 var getUsers = function(cb) { $.get( "/team",cb); };
 
 var updateStats = function(state, cb) {
-  var coffee = state.selected_coffee,
-      user = state.selected_user;
+  var coffee = encodeURIComponent(state.selected_coffee),
+      user = encodeURIComponent(state.selected_user);
   $.post("/update/"+coffee+"/"+user,  cb);
 };
 
