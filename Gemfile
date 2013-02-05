@@ -7,6 +7,8 @@ gem 'thin'
 gem "hiredis"
 gem "redis", :require => ["redis/connection/hiredis", "redis"]
 
+gem 'newrelic_rpm'
+
 
 group :development do
   gem 'shotgun'
