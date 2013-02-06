@@ -3,6 +3,7 @@ require 'json'
 require './lib/redis'
 require './lib/models'
 require './lib/widgets'
+require 'newrelic_rpm'
 
 class CoffeeApp < Sinatra::Base
 
