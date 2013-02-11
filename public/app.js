@@ -1,3 +1,10 @@
+// bust mobile safari's cache
+$.ajaxSetup({
+  cache: false,
+  headers: {
+    'Cache-Control': 'no-cache'
+  }
+});
 var getCoffees = function(cb) { $.get("/coffees", cb); };
 
 var getUsers = function(cb) { $.get( "/team",cb); };
