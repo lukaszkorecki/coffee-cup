@@ -53,6 +53,7 @@ body {
 
 .cell {
   margin: 20px;
+  margin-left: 0;
   width: 130px;
   height: 80px;
   text-align: center;

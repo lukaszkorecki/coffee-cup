@@ -13,6 +13,8 @@ group :development do
   gem 'guard'
   gem 'guard-rspec'
   gem 'pry'
+
+  gem 'yard'
 end
 
 group :test do

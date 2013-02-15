@@ -52,4 +52,6 @@ tea:
 water:
   name: Water
   color: white
-
+beer:
+  name: Beer
+  color: yellow
