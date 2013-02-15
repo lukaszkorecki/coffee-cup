@@ -4,6 +4,7 @@ gem 'sinatra'
 gem 'sass'
 gem 'json'
 gem 'thin'
+gem 'geckoboard-push'
 gem "hiredis"
 gem "redis", :require => ["redis/connection/hiredis", "redis"]
 
