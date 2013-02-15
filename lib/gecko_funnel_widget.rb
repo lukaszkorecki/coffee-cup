@@ -5,7 +5,7 @@ class GeckoFunnelWidget
   end
 
   def response
-    @template['item'] = @data_set.map {|item| { "value" => item.values.first, "label" => item.keys.first } }
+    @template['item'] = @data_set.map {|item| { value: item.values.first, label: item.keys.first } }.sort_by{ |x| -x[:value] }
     @template
   end
 end

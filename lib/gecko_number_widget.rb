@@ -5,7 +5,7 @@ class GeckoNumberWidget
   end
 
   def response
-    @template['item'] = @data_set.map {|item| { "value" => item, "label" => "" } }
+    @template['item'] = @data_set.map {|item| { value: item, label: "" } }
     @template
   end
 end
