@@ -12,7 +12,7 @@ var getUsers = function(cb) { $.get( "/team",cb); };
 var updateStats = function(state, cb) {
   var coffee = encodeURIComponent(state.selected_coffee),
       user = encodeURIComponent(state.selected_user);
-  $.post("/update/"+coffee+"/"+user,  cb);
+  $.post("/update/"+coffee+"/"+user,  cb).fail(function() { alert('Updating failed! Try again!'); console.dir(arguments); });
 };
 
 // duplication, but who cares?
