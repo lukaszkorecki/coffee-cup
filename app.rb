@@ -1,5 +1,6 @@
 require 'yaml'
 require 'json'
+require 'geckoboard-push'
 require './lib/redis'
 require './lib/push_info'
 require './lib/models'
@@ -43,13 +44,7 @@ class CoffeeApp < Sinatra::Base
     if did_update
       if PUSH_KEY
         gecko_pusher = GeckoPusher.new PUSH_KEY
-
-        # TODO FIXME dry it, move it somewhere else
-        gecko_pusher.add(PUSH_WIDGETS.coffee_stats_key, :funnel,  COFFEE_COUNTER.coffee_stats) if PUSH_WIDGETS.coffee_stats_key
-        gecko_pusher.add(PUSH_WIDGETS.user_stats_key, :funnel,  COFFEE_COUNTER.user_stats) if PUSH_WIDGETS.user_stats_key
-        gecko_pusher.add(PUSH_WIDGETS.daily_coffee_key, :number, COFFEE_COUNTER.daily_stats) if PUSH_WIDGETS.daily_coffee_key
-        gecko_pusher.add(PUSH_WIDGETS.total_coffee_key, :number, COFFEE_COUNTER.total_coffees) if PUSH_WIDGETS.total_coffee_key
-
+        gecko_pusher.setup PUSH_WIDGETS, COFFEE_COUNTER
         gecko_pusher.push!
       end
 

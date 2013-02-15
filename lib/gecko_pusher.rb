@@ -1,9 +1,16 @@
-require 'geckoboard-push'
 class GeckoPusher
   def initialize api_key
-    @url = "https://push.geckoboard.com/v1/send/"
-    ::Geckoboard::Push.api_key = api_key
+    @api_key = api_key
     @queue = []
+  end
+
+  # this is "hardcoded" here so that request handler is cleaner
+  def setup push_widgets, stats
+    add(push_widgets.coffee_stats_key, :funnel,  stats.coffee_stats) if push_widgets.coffee_stats_key
+    add(push_widgets.user_stats_key, :funnel,  stats.user_stats) if push_widgets.user_stats_key
+    add(push_widgets.daily_coffee_key, :number, stats.daily_stats) if push_widgets.daily_coffee_key
+    add(push_widgets.total_coffee_key, :number, stats.total_coffees) if push_widgets.total_coffee_key
+
   end
 
   def add widget_key, type, widget_data
@@ -19,6 +26,8 @@ class GeckoPusher
 
   private
   def post_to_gecko type, key, data
+    ::Geckoboard::Push.api_key = @api_key
+
     case type
     when :funnel
       widget_data = GeckoFunnelWidget.new(data).response['item']
